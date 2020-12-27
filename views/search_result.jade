@@ -1,0 +1,17 @@
+extends layout
+
+block css
+    link(rel="stylesheet", href="/stylesheets/search_result.css")
+
+block content
+    .wrap
+        h1 검색 결과입니다
+        each file, idx in files
+            .card(onclick="onCardClicked('" + file + "');")
+                | #{file}
+
+        .go-to-back
+            a(href="../../") 검색 페이지로 돌아가기..
+
+block script
+    script(src="/javascripts/search_result.js")

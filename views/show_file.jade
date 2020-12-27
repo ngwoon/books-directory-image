@@ -1,0 +1,28 @@
+extends layout
+
+block css
+    link(rel='stylesheet', href='/stylesheets/show_file.css')
+
+block content
+    .wrap
+        h1.title #{title}
+        br
+        .innerwrap
+            if user
+                form(action="#").js-update-form
+                    //- input(type="hidden" name="_method" value="PUT")
+                    .button-wrap
+                        button(type="submit" class="js-update-button btn update-button") 업데이트 요청
+                        button(type="button" class="js-delete-button btn delete-button") 삭제 요청
+                    textarea(name="content").js-textarea #{content}
+                    input(type="hidden" name="title" value="#{title}")
+            
+            else
+                textarea(readonly value="") #{content}
+
+            a(class="go-back-home" href="/")
+                | 홈으로..
+
+block script
+    script(src='/vendor/jquery/jquery-3.2.1.min.js')
+    script(src="/javascripts/show_file.js")
