@@ -5,14 +5,14 @@ const secret = require("../secrets.json");
 const router = express.Router();
 
 const TABLE = "user";
-let SERVER = secret.SERVER;
+// let SERVER = secret.SERVER;
 
 function init() {
 
-    if(os.hostname === secret.HOSTNAME)
-        SERVER = secret.DEVELOP_SERVER;
-    else
-        SERVER = secret.DEPLOY_SERVER;
+    // if(os.hostname === secret.HOSTNAME)
+    //     SERVER = secret.DEVELOP_SERVER;
+    // else
+    //     SERVER = secret.DEPLOY_SERVER;
 
     router.get('', function(req, res, next) {
         res.render('signup');

@@ -4,15 +4,15 @@ const secret = require("../secrets.json");
 const connection = require("../dbconn.js");
 const router = express.Router();
 
-let SERVER;
+// let SERVER;
 const TABLE = "user";
 
 function init() {
 
-    if(os.hostname === secret.HOSTNAME)
-        SERVER = secret.DEVELOP_SERVER;
-    else
-        SERVER = secret.DEPLOY_SERVER;
+    // if(os.hostname === secret.HOSTNAME)
+    //     SERVER = secret.DEVELOP_SERVER;
+    // else
+    //     SERVER = secret.DEPLOY_SERVER;
 
     /* GET users listing. */
     router.get('', function(req, res, next) {
