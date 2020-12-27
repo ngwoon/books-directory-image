@@ -1,0 +1,36 @@
+name: Docker- Github Action Practice
+
+on:
+  push:
+    branches: [master]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+  strategy:
+      matrix:
+        node-version: [12.x]
+
+  steps:
+    - 
+      name: Login to DockerHub
+      uses: docker/login-action@v1
+      with:
+        username: ${{ secrets.DOCKER_HUB_USERNAME }}
+        password: ${{ secrets.DOCKER_HUB_ACCESS_TOKEN }}
+
+    - 
+      name: Build and push
+      id: docker_build
+      uses: docker/build-push-action@v2
+      with:
+        context: ./
+        file: ./Dockerfile
+        push: true
+        tags: ngwoon/books-directory:latest
+
+    - 
+      name: Image digest
+      run: echo ${{ steps.docker_build.outputs.digest }}
+
